@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\User;
 use Illuminate\Support\Facades\Route;
-use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -23,7 +22,7 @@ class UserControllerTest extends TestCase
 
         $this->actingAs($user);
 
-        $users = factory(User::class, 5)->create();
+//        $users = factory(User::class, 5)->create();
 
         $response = $this->get(route('users.index')."?search=lorem");
         if ($response->exception) {
@@ -65,7 +64,7 @@ class UserControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $this->actingAs($user);
-        $response = $this->post(route('users.store'), factory(User::class)->make()->toArray());
+        $response = $this->post(route('users.store'), array_merge(factory(User::class)->make()->toArray(), [ 'password' => 'secret' ]));
         if ($response->getStatusCode() == 422) {
             $this->expectOutputString('');
             $this->setOutputCallback(function () use($response) { return json_encode(session()->all(), JSON_PRETTY_PRINT); });
@@ -92,7 +91,7 @@ class UserControllerTest extends TestCase
 
         $this->actingAs($user);
 
-        $user = factory(User::class)->create();
+//        $user = factory(User::class)->create();
 
         $response = $this->get(route('users.show', [ $user->getKey() ]));
         if ($response->exception) {
@@ -115,7 +114,7 @@ class UserControllerTest extends TestCase
 
         $this->actingAs($user);
 
-        $user = factory(User::class)->create();
+//        $user = factory(User::class)->create();
 
         $response = $this->get(route('users.edit', [ $user->getKey() ]));
         if ($response->exception) {
@@ -138,9 +137,9 @@ class UserControllerTest extends TestCase
 
         $this->actingAs($user);
 
-        $user = factory(User::class)->create();
+//        $user = factory(User::class)->create();
 
-        $response = $this->put(route('users.update', [ $user->getKey() ]), factory(User::class)->make()->toArray());
+        $response = $this->put(route('users.update', [ $user->getKey() ]), array_merge(factory(User::class)->make()->toArray(), [ 'password' => 'secret' ]));
         if ($response->getStatusCode() == 422) {
             $this->expectOutputString('');
             $this->setOutputCallback(function () use($response) { return json_encode(session()->all(), JSON_PRETTY_PRINT); });
@@ -168,7 +167,7 @@ class UserControllerTest extends TestCase
 
         $this->actingAs($user);
 
-        $user = factory(User::class)->create();
+//        $user = factory(User::class)->create();
 
         $response = $this->delete(route('users.destroy', [ $user->getKey() ]));
         if ($response->exception) {

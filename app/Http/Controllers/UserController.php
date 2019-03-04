@@ -75,7 +75,7 @@ class UserController extends Controller
                     //    return [ 'value' => $parent->id, 'text' => $parent->name ];
                     //})->prepend([ 'value' => '', 'text' => '-' ])->toArray() ],
                     [ 'field' => 'input', 'type' => 'text', 'name' => 'name', 'label' => ucwords(__('users.name')), 'required' => true ],
-                    [ 'name' => 'email', 'label' => ucwords(__('users.email')) ],
+                    [ 'field' => 'input', 'type' => 'email', 'name' => 'email', 'label' => ucwords(__('users.email')) ],
                 ]
             ],
             'edit' => [
@@ -84,7 +84,7 @@ class UserController extends Controller
                     //    return [ 'value' => $parent->id, 'text' => $parent->name ];
                     //})->prepend([ 'value' => '', 'text' => '-' ])->toArray() ],
                     [ 'field' => 'input', 'type' => 'text', 'name' => 'name', 'label' => ucwords(__('users.name')) ],
-                    [ 'name' => 'email', 'label' => ucwords(__('users.email')) ],
+                    [ 'field' => 'input', 'type' => 'email', 'name' => 'email', 'label' => ucwords(__('users.email')) ],
                 ]
             ]
         ];
@@ -100,12 +100,14 @@ class UserController extends Controller
     {
         return [
             'store' => [
-                //'parent_id' => 'required|exists:parents,id',
                 'name' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:users',
+                'password' => 'required|string|min:6',
             ],
             'update' => [
-                //'parent_id' => 'exists:parents,id',
-                'name' => 'string|max:255',
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:users',
+                'password' => 'required|string|min:6',
             ]
         ];
     }
