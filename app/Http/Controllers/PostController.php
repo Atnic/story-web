@@ -22,7 +22,7 @@ class PostController extends Controller
             'post' => [
                 'belongsToMany' => [], // also for morphToMany
                 'hasMany' => [
-                    //[ 'name' => 'childs', 'label' => ucwords(__('posts.childs')) ],
+                    [ 'name' => 'comments', 'label' => ucwords(__('posts.comments')) ],
                 ], // also for morphMany, hasManyThrough
                 'hasOne' => [
                     //[ 'name' => 'child', 'label' => ucwords(__('posts.child')) ],

@@ -6,14 +6,14 @@ use Smartisan\Filters\Traits\Filterable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Post Model
+ * Comment Model
  */
-class Post extends Model
+class Comment extends Model
 {
     use Filterable;
 
     /** @var string Filter Class */
-    protected $filters = 'App\Filters\PostFilter';
+    protected $filters = 'App\Filters\CommentFilter';
 
     /** @var string $table */
     //protected $table = '';
@@ -45,7 +45,7 @@ class Post extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function comments() {
-        return $this->hasMany('App\Comment');
+    public function post() {
+        return $this->belongsTo('App\Post');
     }
 }

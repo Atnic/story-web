@@ -10,6 +10,6 @@ return [
     'created_at' => 'created at',
 
     //'parent' => 'parent',
-    //'childs' => 'childs',
+    'comments' => 'comments',
 
 ];
