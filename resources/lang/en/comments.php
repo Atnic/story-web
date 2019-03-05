@@ -6,7 +6,8 @@ return [
     'singular' => 'comment',
 
     'comment' => 'comment',
-    'user' => 'user'
+    'user' => 'user',
+    'created_at' => 'created at'
 
     //'parent' => 'parent',
     //'childs' => 'childs',

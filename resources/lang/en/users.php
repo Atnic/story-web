@@ -7,7 +7,7 @@ return [
 
     'name' => 'name',
     'email' => 'email',
-    'created_at' => 'created_at',
+    'created_at' => 'created at',
 
     //'parent' => 'parent',
     'posts' => 'posts',
