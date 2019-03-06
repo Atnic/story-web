@@ -11,15 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::domain('admin.'.config('app.domain'))->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Auth::routes();
+
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('posts', 'PostController');
+    Route::resource('posts.comments', 'Post\CommentController');
+    Route::resource('users', 'UserController');
+    Route::resource('users.posts', 'User\PostController');
+    Route::resource('users.comments', 'User\CommentController');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('posts', 'PostController');
-Route::resource('posts.comments', 'Post\CommentController');
-Route::resource('users', 'UserController');
-Route::resource('users.posts', 'User\PostController');
-Route::resource('users.comments', 'User\CommentController');
+Route::get('/{path?}', 'IndexController')->name('index');
