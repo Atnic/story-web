@@ -26,4 +26,4 @@ Route::domain('admin.'.config('app.domain'))->group(function () {
     Route::resource('users.comments', 'User\CommentController');
 });
 
-Route::get('/{path?}', 'IndexController')->name('index');
+Route::get('/{path?}', 'IndexController')->name('index')->where('path', '.+');

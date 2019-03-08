@@ -119,7 +119,7 @@ export default {
       this.user = this.$store.state.auth.user;
       this.page += 1
       this.axios
-        .get("/posts?with=user&&with_count=comments?per_page=" + this.perPage + '&page=' + this.page, {
+        .get("/posts?with=user&with_count=comments&per_page=" + this.perPage + '&page=' + this.page, {
           headers: {
             'Authorization': 'Bearer ' + this.$store.state.auth.token
           }

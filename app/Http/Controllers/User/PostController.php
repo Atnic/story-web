@@ -94,10 +94,10 @@ class PostController extends Controller
     {
         return [
             'store' => [
-                'name' => 'required|string|max:255',
+                'post' => 'required|string',
             ],
             'update' => [
-                'name' => 'string|max:255',
+                'post' => 'string',
             ]
         ];
     }

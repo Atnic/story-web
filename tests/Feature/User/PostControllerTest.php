@@ -5,7 +5,6 @@ namespace Tests\Feature\User;
 use App\Post;
 use Illuminate\Support\Facades\Route;
 use App\User;
-use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -124,7 +123,7 @@ class PostControllerTest extends TestCase
 
         $this->actingAs($user);
 
-        $user = factory(User::class)->create();
+        //$user = factory(User::class)->create();
         $post = $user->posts()->save(factory(Post::class)->make([ $user->getForeignKey() => $user->getKey() ]));
 
         $response = $this->get(route('users.posts.edit', [ $user->getKey(), $post->getKey()  ]));
@@ -148,7 +147,7 @@ class PostControllerTest extends TestCase
 
         $this->actingAs($user);
 
-        $user = factory(User::class)->create();
+        //$user = factory(User::class)->create();
         $post = $user->posts()->save(factory(Post::class)->make([ $user->getForeignKey() => $user->getKey() ]));
 
         $response = $this->put(route('users.posts.update', [ $user->getKey(), $post->getKey()  ]), factory(Post::class)->make([ $user->getForeignKey() => $user->getKey() ])->toArray());
@@ -179,7 +178,7 @@ class PostControllerTest extends TestCase
 
         $this->actingAs($user);
 
-        $user = factory(User::class)->create();
+        //$user = factory(User::class)->create();
         $post = $user->posts()->save(factory(Post::class)->make([ $user->getForeignKey() => $user->getKey() ]));
 
         $response = $this->delete(route('users.posts.destroy', [ $user->getKey(), $post->getKey()  ]));

@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 
 import Login from '../components/auth/login.vue'
 import Home from '../components/home/index.vue'
-import Show from '../components/post/post.vue'
+import Show from '../components/post/show.vue'
 import User from '../components/user/index.vue'
 import EditUser from '../components/user/edit.vue'
 import Register from '../components/auth/register.vue'
@@ -30,7 +30,10 @@ const routes = [
     {
         path: '/home',
         name: 'Home',
-        component: Home
+        component: Home,
+        meta: {
+            keepAlive: true
+        }
     },
     {
         path: '/p/:id',

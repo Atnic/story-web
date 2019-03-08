@@ -94,10 +94,12 @@ class CommentController extends Controller
     {
         return [
             'store' => [
-                'name' => 'required|string|max:255',
+                'post_id' => 'required',
+                'comment' => 'required|string|max:255',
             ],
             'update' => [
-                'name' => 'string|max:255',
+                'post_id' => 'required',
+                'comment' => 'string|max:255',
             ]
         ];
     }

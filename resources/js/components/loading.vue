@@ -4,8 +4,8 @@
             v-if="$store.state.loadContent"
             indeterminate
             color="blue"
-            width="5"
-            style="margin: 32px auto;"
+            width="3"
+            size=28
         ></v-progress-circular>
     </v-layout>
 </template>

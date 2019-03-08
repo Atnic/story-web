@@ -5,7 +5,6 @@ namespace Tests\Feature\User;
 use App\Comment;
 use Illuminate\Support\Facades\Route;
 use App\User;
-use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -71,9 +70,10 @@ class CommentControllerTest extends TestCase
 
         $this->actingAs($user);
 
-        $user = factory(User::class)->create();
+        //$user = factory(User::class)->create();
 
         $response = $this->post(route('users.comments.store', [ $user->getKey() ]), factory(Comment::class)->make([ $user->getForeignKey() => $user->getKey() ])->toArray());
+
         if ($response->getStatusCode() == 422) {
             $this->expectOutputString('');
             $this->setOutputCallback(function () use($response) { return json_encode(session()->all(), JSON_PRETTY_PRINT); });
@@ -124,7 +124,7 @@ class CommentControllerTest extends TestCase
 
         $this->actingAs($user);
 
-        $user = factory(User::class)->create();
+        //$user = factory(User::class)->create();
         $comment = $user->comments()->save(factory(Comment::class)->make([ $user->getForeignKey() => $user->getKey() ]));
 
         $response = $this->get(route('users.comments.edit', [ $user->getKey(), $comment->getKey()  ]));
@@ -148,7 +148,7 @@ class CommentControllerTest extends TestCase
 
         $this->actingAs($user);
 
-        $user = factory(User::class)->create();
+        //$user = factory(User::class)->create();
         $comment = $user->comments()->save(factory(Comment::class)->make([ $user->getForeignKey() => $user->getKey() ]));
 
         $response = $this->put(route('users.comments.update', [ $user->getKey(), $comment->getKey()  ]), factory(Comment::class)->make([ $user->getForeignKey() => $user->getKey() ])->toArray());
@@ -179,7 +179,7 @@ class CommentControllerTest extends TestCase
 
         $this->actingAs($user);
 
-        $user = factory(User::class)->create();
+        //$user = factory(User::class)->create();
         $comment = $user->comments()->save(factory(Comment::class)->make([ $user->getForeignKey() => $user->getKey() ]));
 
         $response = $this->delete(route('users.comments.destroy', [ $user->getKey(), $comment->getKey()  ]));

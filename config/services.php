@@ -40,4 +40,8 @@ return [
         ],
     ],
 
+    'onesignal' => [
+        'app_id' => env('ONE_SIGNAL_APP_ID')
+    ],
+
 ];

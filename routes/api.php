@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::apiResource('posts', 'Api\PostController', [ 'as' => 'api' ]);
+Route::apiResource('posts.comments', 'Api\Post\CommentController', [ 'as' => 'api' ]);
+Route::apiResource('users', 'Api\UserController', [ 'as' => 'api' ]);
+Route::apiResource('users.posts', 'Api\User\PostController', [ 'as' => 'api' ]);
